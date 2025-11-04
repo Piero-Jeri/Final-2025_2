@@ -1,16 +1,30 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //-> Privados
+
+
+
+    //->Actions
+    public static Action OnPlayerDead;
+
     void Start()
     {
-        
+        PlayerDead();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    public void PlayerDead()
+    {
+        OnPlayerDead?.Invoke();
+    }
+
+    public Vector3 GetPlayerPosition => gameObject.transform.position;
 }

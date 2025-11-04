@@ -1,16 +1,27 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Action SimpleEvent;
+    public Action<int> Event2;
+
     void Start()
     {
-        
+        SimpleEvent = null;
+    }
+    private void OnEnable()
+    {
+        Player.OnPlayerDead += ShowDeadUI;
+
+    }
+    private void OnDisable()
+    {
+        Player.OnPlayerDead -= ShowDeadUI;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowDeadUI()
     {
-        
+
     }
 }
